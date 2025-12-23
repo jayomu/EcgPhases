@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardiac Pharmacology Visualizer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="p-4 md:p-6 lg:p-8 theme-normal" id="mainBody">
+<div class="max-w-7xl mx-auto">
+    <!-- Header & Visuals -->
+    <header class="mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+            <h1 class="text-3xl font-bold text-slate-100 tracking-tight">
+                Cardiac <span id="header-highlight" class="text-cyan-400">Physiology & Pharmacology</span>
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">Ventricular Action Potential vs. Surface ECG Correlation</p>
+        </div>
+        <div class="flex items-center gap-4">
+            <button id="playBtn" class="px-5 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium transition-colors text-sm flex items-center gap-2">
+                Sync
+            </button>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left Column: Visuals -->
+        <div class="lg:col-span-8 space-y-6">
+            <!-- Action Potential -->
+            <div class="relative group">
+                <div class="flex justify-between items-end mb-2 px-1">
+                    <h2 class="text-lg font-semibold text-slate-200">Action Potential <span class="text-xs text-slate-500 font-normal ml-2">(Ventricular Myocyte)</span></h2>
+                    <span id="ap-phase-display" class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-cyan-400 border border-slate-700">Phase 4</span>
+                </div>
+                <div class="canvas-container shadow-2xl shadow-black/20">
+                    <canvas id="apCanvas"></canvas>
+                </div>
+                <div class="grid grid-cols-5 gap-1 mt-2 text-[10px] md:text-xs text-slate-500 text-center font-medium">
+                    <div id="p0" class="phase-label">P0: Na⁺ Influx<br>(Depol)</div>
+                    <div id="p1" class="phase-label">P1: K⁺ Efflux<br>(Notch)</div>
+                    <div id="p2" class="phase-label">P2: Ca²⁺ In<br>(Plateau)</div>
+                    <div id="p3" class="phase-label">P3: K⁺ Out<br>(Repol)</div>
+                    <div id="p4" class="phase-label">P4: K⁺/Na⁺ Pump<br>(Resting)</div>
+                </div>
+            </div>
+
+            <!-- ECG -->
+            <div class="relative group">
+                <div class="flex justify-between items-end mb-2 px-1">
+                    <h2 class="text-lg font-semibold text-slate-200">Surface ECG <span class="text-xs text-slate-500 font-normal ml-2">(Lead II)</span></h2>
+                    <span id="ecg-segment-display" class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-emerald-400 border border-slate-700">Baseline</span>
+                </div>
+                <div class="canvas-container shadow-2xl shadow-black/20">
+                    <canvas id="ecgCanvas"></canvas>
+                </div>
+                <div class="flex justify-around mt-2 text-[10px] md:text-xs text-slate-500 font-medium px-4">
+                    <span class="phase-label">P Wave</span>
+                    <span class="phase-label">PR Interval</span>
+                    <span class="phase-label">QRS Complex</span>
+                    <span class="phase-label">ST Segment</span>
+                    <span class="phase-label">T Wave</span>
+                </div>
+            </div>
+
+            <!-- Info Box -->
+            <div class="bg-slate-800/60 rounded-xl p-4 border border-slate-700 backdrop-blur-sm">
+                <div class="flex gap-3">
+                    <div class="mt-1">
+                        <div class="w-2 h-12 rounded-full bg-gradient-to-b from-cyan-400 to-blue-600" id="info-bar"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wide mb-1" id="info-title">Normal Sinus Rhythm</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed" id="info-desc">
+                            Baseline physiological state. Phase 0 corresponds to QRS. Phase 2 plateau corresponds to ST segment. Phase 3 repolarization generates the T wave.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Controls -->
+        <div class="lg:col-span-4 flex flex-col h-[800px] lg:h-auto">
+            <div class="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden flex flex-col h-full">
+                <div class="p-4 bg-slate-900 border-b border-slate-700">
+                    <h3 class="font-bold text-slate-200 flex items-center gap-2">
+                        Pharmacology & Pathology
+                    </h3>
+                </div>
+                <div class="flex-1 overflow-y-auto scenario-list p-2 space-y-6" id="scenario-list">
+                    <!-- Radio buttons injected dynamically via JS -->
+                </div>
+                <div class="pt-4 pb-2 px-2">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-xs text-slate-400">Anim. Speed:</span>
+                        <input type="range" id="speedSlider" min="0.2" max="2" step="0.1" value="1" class="accent-slate-400 w-full h-1 bg-slate-700 rounded-lg appearance-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/scenarios.js"></script>
+<script src="js/drawGraph.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/ui.js"></script>
+
+</body>
+</html>
