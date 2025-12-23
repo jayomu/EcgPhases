@@ -22,15 +22,22 @@ function animate(time) {
     const compareAp = currentScenarioKey === 'normal' ? null : normalAp;
     const compareEcg = currentScenarioKey === 'normal' ? null : normalEcg;
 
-    // --- Phase Detection Logic ---
+    // --- Phase Detection Logic (Fixed) ---
     let currentPhase = 4;
+
+    // Find which segment we are currently in
     for (let i = 1; i < currentApPoints.length; i++) {
-        if (progress <= currentApPoints[i].x) {
-            currentPhase = currentApPoints[i - 1].phase;
+        const p1 = currentApPoints[i - 1];
+        const p2 = currentApPoints[i];
+
+        // Check if progress is between these two points
+        if (progress >= p1.x && progress < p2.x) {
+            // We are strictly between p1 and p2.
+            // The phase of this SEGMENT is defined by the starting point (p1).
+            currentPhase = p1.phase;
             break;
         }
     }
-
     // --- UI Updates ---
     const phaseDisplay = document.getElementById('ap-phase-display');
     if(phaseDisplay) {
