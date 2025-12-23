@@ -294,5 +294,74 @@ const scenarios = {
             { x: 0.55, y: 0.65 }, { x: 0.65, y: 0.7 },
             { x: 1.0, y: 0.7 }
         ]
+    }, 
+    'hyperkalemia': {
+        name: "Hyperkalemia (High K⁺)",
+        theme: "theme-lyte",
+        barColor: "bg-red-500",
+        desc: "Resting membrane potential becomes less negative. Na⁺ channels inactivate. Slows conduction (Wide QRS). Rapid repolarization creates Peaked T waves.",
+        speedMod: 1.0,
+        ecgRegions: [
+            { start: 0.00, end: 0.05, text: "Resting" },
+            { start: 0.05, end: 0.12, text: "Flat P Wave" }, // Flattened P
+            { start: 0.12, end: 0.15, text: "PR Interval" },
+            { start: 0.15, end: 0.30, text: "Wide QRS" },    // Widened QRS
+            { start: 0.30, end: 0.40, text: "ST Segment" },
+            { start: 0.40, end: 0.65, text: "Peaked T Wave" }, // Tall T
+            { start: 0.65, end: 1.00, text: "Resting" }
+        ],
+        ap: [
+            { x: 0,    y: 0.8,  phase: 4 }, 
+            { x: 0.1,  y: 0.8,  phase: 0 }, // Upstroke start
+            { x: 0.18, y: 0.15, phase: 1 }, // Notch start
+            { x: 0.20, y: 0.2,  phase: 2 }, // Plateau start
+            { x: 0.40, y: 0.25, phase: 3 }, // Fast Repol start
+            { x: 0.60, y: 0.8,  phase: 4 }, // Back to RMP
+            { x: 1.0,  y: 0.8,  phase: 4 }
+        ],
+        ecg: [
+            { x: 0, y: 0.7 }, { x: 0.05, y: 0.7 }, { x: 0.075, y: 0.68 }, { x: 0.1, y: 0.7 },
+            { x: 0.14, y: 0.7 },
+            { x: 0.15, y: 0.75 }, { x: 0.20, y: 0.2 }, { x: 0.25, y: 0.85 }, { x: 0.28, y: 0.7 },
+            { x: 0.40, y: 0.7 },
+            { x: 0.50, y: 0.3 }, { x: 0.60, y: 0.7 },
+            { x: 1.0, y: 0.7 }
+        ]
+    },
+
+    'hypokalemia': {
+        name: "Hypokalemia (Low K⁺)",
+        theme: "theme-lyte",
+        barColor: "bg-red-400",
+        desc: "Hyperpolarization (Lower RMP). Phase 3 is delayed and flattened. Prominent U Wave appears after T wave.",
+        speedMod: 1.0,
+        ecgRegions: [
+            { start: 0.00, end: 0.05, text: "Resting" },
+            { start: 0.05, end: 0.12, text: "P Wave" },
+            { start: 0.12, end: 0.15, text: "PR Interval" },
+            { start: 0.15, end: 0.22, text: "QRS Complex" },
+            { start: 0.22, end: 0.45, text: "ST Depression" }, // Sags slightly
+            { start: 0.45, end: 0.70, text: "Flat T Wave" },   // Low T
+            { start: 0.70, end: 0.90, text: "Prominent U Wave" }, // The U Wave!
+            { start: 0.90, end: 1.00, text: "Resting" }
+        ],
+        ap: [
+            { x: 0,    y: 0.95, phase: 4 }, 
+            { x: 0.1,  y: 0.95, phase: 0 }, // Upstroke start
+            { x: 0.12, y: 0.1,  phase: 1 }, 
+            { x: 0.18, y: 0.18, phase: 2 }, // Plateau start
+            { x: 0.45, y: 0.25, phase: 3 }, // Slow/Long Repol start
+            { x: 0.80, y: 0.95, phase: 4 }, // Back to RMP (very late)
+            { x: 1.0,  y: 0.95, phase: 4 }
+        ],
+        ecg: [
+            { x: 0, y: 0.7 }, { x: 0.05, y: 0.7 }, { x: 0.075, y: 0.62 }, { x: 0.1, y: 0.7 },
+            { x: 0.14, y: 0.7 },
+            { x: 0.15, y: 0.75 }, { x: 0.17, y: 0.2 }, { x: 0.19, y: 0.85 }, { x: 0.21, y: 0.7 },
+            { x: 0.45, y: 0.75 }, 
+            { x: 0.55, y: 0.7 }, { x: 0.65, y: 0.75 }, 
+            { x: 0.70, y: 0.75 }, { x: 0.80, y: 0.68 }, { x: 0.90, y: 0.75 },
+            { x: 1.0, y: 0.75 }
+        ]
     }
 };
