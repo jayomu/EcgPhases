@@ -54,13 +54,13 @@
                 <div class="canvas-container shadow-2xl shadow-black/20">
                     <canvas id="ecgCanvas"></canvas>
                 </div>
-                <div class="flex justify-around mt-2 text-[10px] md:text-xs text-slate-500 font-medium px-4">
-                    <span class="phase-label">P Wave</span>
-                    <span class="phase-label">PR Interval</span>
-                    <span class="phase-label">QRS Complex</span>
-                    <span class="phase-label">ST Segment</span>
-                    <span class="phase-label">T Wave</span>
-                </div>
+                <div class="flex justify-between px-6 mt-2 text-[10px] md:text-xs text-slate-500 font-medium" id="ecg-labels-row">
+    <span id="ecg-p" class="phase-label transition-colors duration-200">P Wave</span>
+    <span id="ecg-pr" class="phase-label transition-colors duration-200">PR Interval</span>
+    <span id="ecg-qrs" class="phase-label transition-colors duration-200">QRS Complex</span>
+    <span id="ecg-st" class="phase-label transition-colors duration-200">ST Segment</span>
+    <span id="ecg-t" class="phase-label transition-colors duration-200">T Wave</span>
+</div>
             </div>
 
             <!-- Info Box -->
