@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -86,6 +86,15 @@
                 
                 <div class="pt-4 pb-4 px-4 bg-slate-800 border-t border-slate-700">
                     
+                    <div class="mb-6">
+                        <div class="text-xs text-slate-400 mb-2 font-medium">View Range (Beats):</div>
+                        <div class="flex bg-slate-700 rounded-lg p-1 gap-1">
+                            <button onclick="setBeats(1)" id="btn-beat-1" class="flex-1 py-1 text-xs font-bold rounded bg-cyan-500 text-white shadow-sm transition-all">1x</button>
+                            <button onclick="setBeats(2)" id="btn-beat-2" class="flex-1 py-1 text-xs font-bold rounded hover:bg-slate-600 text-slate-300 transition-all">2x</button>
+                            <button onclick="setBeats(3)" id="btn-beat-3" class="flex-1 py-1 text-xs font-bold rounded hover:bg-slate-600 text-slate-300 transition-all">3x</button>
+                        </div>
+                    </div>
+
                     <div class="flex items-center gap-2 mb-6">
                         <span class="text-xs text-slate-400 w-16">Speed:</span>
                         <input type="range" id="speedSlider" min="0.2" max="2" step="0.1" value="1" class="accent-slate-400 flex-1 h-1 bg-slate-700 rounded-lg appearance-none">
@@ -117,4 +126,4 @@
 <script src="js/ui.js"></script>
 
 </body>
-</html> 
+</html>               
