@@ -30,18 +30,22 @@ for (const key in scenarios) {
 
 // 2. Function to handle scenario switching
 function updateScenario(key) {
-    currentScenarioKey = key; // Update the variable in animate.js
+    currentScenarioKey = key; 
     
+    // Reset Dose Slider to 1.0 (Standard) when switching drugs
+    const doseSlider = document.getElementById('doseSlider');
+    if(doseSlider) doseSlider.value = 1.0;
+
     // Update text descriptions
     const data = scenarios[key];
     document.getElementById('info-title').innerText = data.name;
     document.getElementById('info-desc').innerText = data.desc;
     
-    // Update Theme Colors on Body
+    // Update Theme Colors
     document.body.className = `p-4 md:p-6 lg:p-8 ${data.theme}`;
 }
 
-// 3. INITIALIZATION (The missing piece!)
+// 3. INITIALIZATION
 function init() {
     console.log("Initializing App...");
     
