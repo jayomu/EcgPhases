@@ -1,3 +1,18 @@
+window.numBeats = 1; // Global state for number of beats
+
+window.setBeats = function(n) {
+    window.numBeats = n;
+    
+    // Update Button Styles
+    [1, 2, 3].forEach(i => {
+        const btn = document.getElementById(`btn-beat-${i}`);
+        if(i === n) {
+            btn.className = "flex-1 py-1 text-xs font-bold rounded bg-cyan-500 text-white shadow-sm transition-all";
+        } else {
+            btn.className = "flex-1 py-1 text-xs font-bold rounded hover:bg-slate-600 text-slate-300 transition-all";
+        }
+    });
+}
 const scenarioList = document.getElementById('scenario-list');
 
 // 1. Generate the UI
