@@ -9,7 +9,6 @@
 </head>
 <body class="p-4 md:p-6 lg:p-8 theme-normal" id="mainBody">
 <div class="max-w-7xl mx-auto">
-    <!-- Header & Visuals -->
     <header class="mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
             <h1 class="text-3xl font-bold text-slate-100 tracking-tight">
@@ -25,9 +24,7 @@
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Left Column: Visuals -->
         <div class="lg:col-span-8 space-y-6">
-            <!-- Action Potential -->
             <div class="relative group">
                 <div class="flex justify-between items-end mb-2 px-1">
                     <h2 class="text-lg font-semibold text-slate-200">Action Potential <span class="text-xs text-slate-500 font-normal ml-2">(Ventricular Myocyte)</span></h2>
@@ -45,7 +42,6 @@
                 </div>
             </div>
 
-            <!-- ECG -->
             <div class="relative group">
                 <div class="flex justify-between items-end mb-2 px-1">
                     <h2 class="text-lg font-semibold text-slate-200">Surface ECG <span class="text-xs text-slate-500 font-normal ml-2">(Lead II)</span></h2>
@@ -55,15 +51,14 @@
                     <canvas id="ecgCanvas"></canvas>
                 </div>
                 <div class="flex justify-between px-6 mt-2 text-[10px] md:text-xs text-slate-500 font-medium" id="ecg-labels-row">
-    <span id="ecg-p" class="phase-label transition-colors duration-200">P Wave</span>
-    <span id="ecg-pr" class="phase-label transition-colors duration-200">PR Interval</span>
-    <span id="ecg-qrs" class="phase-label transition-colors duration-200">QRS Complex</span>
-    <span id="ecg-st" class="phase-label transition-colors duration-200">ST Segment</span>
-    <span id="ecg-t" class="phase-label transition-colors duration-200">T Wave</span>
-</div>
+                    <span id="ecg-p" class="phase-label transition-colors duration-200">P Wave</span>
+                    <span id="ecg-pr" class="phase-label transition-colors duration-200">PR Interval</span>
+                    <span id="ecg-qrs" class="phase-label transition-colors duration-200">QRS Complex</span>
+                    <span id="ecg-st" class="phase-label transition-colors duration-200">ST Segment</span>
+                    <span id="ecg-t" class="phase-label transition-colors duration-200">T Wave</span>
+                </div>
             </div>
 
-            <!-- Info Box -->
             <div class="bg-slate-800/60 rounded-xl p-4 border border-slate-700 backdrop-blur-sm">
                 <div class="flex gap-3">
                     <div class="mt-1">
@@ -79,7 +74,6 @@
             </div>
         </div>
 
-        <!-- Right Column: Controls -->
         <div class="lg:col-span-4 flex flex-col h-[800px] lg:h-auto">
             <div class="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden flex flex-col h-full">
                 <div class="p-4 bg-slate-900 border-b border-slate-700">
@@ -88,12 +82,28 @@
                     </h3>
                 </div>
                 <div class="flex-1 overflow-y-auto scenario-list p-2 space-y-6" id="scenario-list">
-                    <!-- Radio buttons injected dynamically via JS -->
-                </div>
-                <div class="pt-4 pb-2 px-2">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="text-xs text-slate-400">Anim. Speed:</span>
-                        <input type="range" id="speedSlider" min="0.2" max="2" step="0.1" value="1" class="accent-slate-400 w-full h-1 bg-slate-700 rounded-lg appearance-none">
+                    </div>
+                
+                <div class="pt-4 pb-4 px-4 bg-slate-800 border-t border-slate-700">
+                    
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="text-xs text-slate-400 w-16">Speed:</span>
+                        <input type="range" id="speedSlider" min="0.2" max="2" step="0.1" value="1" class="accent-slate-400 flex-1 h-1 bg-slate-700 rounded-lg appearance-none">
+                    </div>
+
+                    <div class="border-t border-slate-700 pt-4">
+                        <div class="flex justify-between text-xs text-slate-400 mb-2 font-medium">
+                            <span>No Effect</span>
+                            <span class="text-cyan-400">Standard</span>
+                            <span class="text-red-400">Toxic</span>
+                        </div>
+                        <input type="range" id="doseSlider" min="0" max="2" step="0.1" value="1" 
+                               class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+                        <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                            <span>0.0</span>
+                            <span>1.0</span>
+                            <span>2.0</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,11 +111,10 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="js/scenarios.js"></script>
 <script src="js/drawGraph.js"></script>
 <script src="js/animate.js"></script>
 <script src="js/ui.js"></script>
 
 </body>
-</html>
+</html> 
